@@ -1,4 +1,4 @@
-package com.arcanium.data
+package com.arcanium.domain
 
 sealed class Resource<T, M>(
     open val data: T?,

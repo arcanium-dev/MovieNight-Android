@@ -1,7 +1,8 @@
-package com.arcanium.data
+package com.arcanium.data.user
 
 import com.arcanium.domain.NullUserException
-import com.arcanium.domain.model.User
+import com.arcanium.domain.Resource
+import com.arcanium.domain.user.model.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

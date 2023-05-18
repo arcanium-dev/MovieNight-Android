@@ -1,5 +1,7 @@
 package com.arcanium.data
 
+import com.arcanium.data.user.UserRepository
+import com.arcanium.data.user.UserRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
