@@ -9,7 +9,11 @@ import javax.inject.Singleton
 object DataModule {
     @Provides
     @Singleton
-    fun provideFirebaseAuthInstance(): FirebaseAuth {
-        return FirebaseAuth.getInstance()
-    }
+    fun provideFirebaseAuthInstance(): FirebaseAuth =
+        FirebaseAuth.getInstance()
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository =
+        userRepositoryImpl
 }
