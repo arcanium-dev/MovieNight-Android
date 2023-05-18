@@ -1,4 +1,4 @@
-package com.arcanium.core.data
+package com.arcanium.data
 
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
