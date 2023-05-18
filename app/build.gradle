@@ -65,5 +65,5 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
     // Core module
-    implementation project(':core-data')
+    implementation project(':core')
 }

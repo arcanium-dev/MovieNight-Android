@@ -10,11 +10,11 @@ ext {
 }
 
 android {
-    namespace 'com.arcanium.data'
+    namespace 'com.arcanium.core'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.arcanium.data"
+        applicationId "com.arcanium.core"
         minSdk 24
         targetSdk 33
         versionCode 1
