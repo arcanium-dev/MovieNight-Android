@@ -8,7 +8,8 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object DataModule {
+internal object DataModule {
+
     @Provides
     @Singleton
     fun provideFirebaseAuthInstance(): FirebaseAuth =

@@ -1,3 +1,3 @@
 package com.arcanium.domain
 
-class NullUserException : Exception()
+internal class NullUserException : Exception()
