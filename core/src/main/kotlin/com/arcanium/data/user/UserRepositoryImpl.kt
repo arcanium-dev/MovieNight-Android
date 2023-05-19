@@ -1,5 +1,8 @@
-package com.arcanium.data
+package com.arcanium.data.user
 
+import com.arcanium.domain.NullUserException
+import com.arcanium.domain.Resource
+import com.arcanium.domain.user.model.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -13,17 +16,23 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun loginWithEmailAndPassword(
         email: String,
         password: String
-    ): Resource<Unit, String> = withContext(Dispatchers.IO) {
+    ): Resource<User, Exception> = withContext(Dispatchers.IO) {
         return@withContext suspendCoroutine { continuation ->
             firebaseAuth.signInWithEmailAndPassword(
                 email,
                 password
             ).apply {
                 addOnSuccessListener {
-                    continuation.resume(Resource.Success(data = Unit))
+                    it.user?.email.let { username ->
+                        if (username != null) {
+                            continuation.resume(Resource.Success(data = User(username = username)))
+                        } else {
+                            continuation.resume(Resource.Failure(exception = NullUserException()))
+                        }
+                    }
                 }
                 addOnFailureListener {
-                    continuation.resume(Resource.Failure(exception = it.localizedMessage))
+                    continuation.resume(Resource.Failure(exception = it))
                 }
             }
         }

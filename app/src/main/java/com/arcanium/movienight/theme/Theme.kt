@@ -1,4 +1,4 @@
-package com.arcanium.movienight.ui.theme
+package com.arcanium.movienight.theme
 
 import android.app.Activity
 import android.os.Build
