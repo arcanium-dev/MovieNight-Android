@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -36,11 +37,12 @@ internal fun LoginScreen(
     val screenHeight = remember {
         localConfiguration.screenHeightDp
     }
-    val textFieldHeight = ((screenHeight * 0.15f).toInt()).dp
+    val textFieldHeight = ((screenHeight * 0.08f).toInt()).dp
     var isPasswordVisible by remember {
         mutableStateOf(false)
     }
-    
+    val componentWidth = 0.7f
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -48,7 +50,7 @@ internal fun LoginScreen(
     ) {
         OutlinedTextField(
             modifier = Modifier
-                .fillMaxWidth(0.7f)
+                .fillMaxWidth(componentWidth)
                 .height(textFieldHeight)
                 .padding(bottom = 20.dp),
             value = loginUiState.username,
@@ -58,7 +60,7 @@ internal fun LoginScreen(
         )
         OutlinedTextField(
             modifier = Modifier
-                .fillMaxWidth(0.7f)
+                .fillMaxWidth(componentWidth)
                 .height(textFieldHeight)
                 .padding(bottom = 20.dp),
             value = loginUiState.password,
@@ -75,7 +77,13 @@ internal fun LoginScreen(
                 }
             }
         )
-        Button(onClick = loginOnClickListener::onLoginButtonClicked) {
+        Button(
+            modifier = Modifier
+                .height(50.dp)
+                .fillMaxWidth(componentWidth),
+            onClick = loginOnClickListener::onLoginButtonClicked,
+            shape = CircleShape
+        ) {
             Text(text = "Login")
         }
     }
