@@ -11,10 +11,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
-import com.arcanium.movienight.login.ui.LoginOnClickListener
 import com.arcanium.movienight.login.ui.LoginScreen
 import com.arcanium.movienight.login.ui.LoginViewModel
-import com.arcanium.navigation.NavDestination
+import com.arcanium.movienight.navigation.NavDestination
 
 @Composable
 internal fun AppNavHost() {

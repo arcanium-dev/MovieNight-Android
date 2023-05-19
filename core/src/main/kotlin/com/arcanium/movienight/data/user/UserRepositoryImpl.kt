@@ -1,8 +1,8 @@
-package com.arcanium.data.user
+package com.arcanium.movienight.data.user
 
-import com.arcanium.domain.NullUserException
-import com.arcanium.domain.Resource
-import com.arcanium.domain.user.model.User
+import com.arcanium.movienight.domain.NullUserException
+import com.arcanium.movienight.domain.Resource
+import com.arcanium.movienight.domain.user.model.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -10,7 +10,7 @@ import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class UserRepositoryImpl @Inject constructor(
+internal class UserRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : UserRepository {
     override suspend fun loginWithEmailAndPassword(

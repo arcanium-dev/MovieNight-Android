@@ -1,3 +1,3 @@
-package com.arcanium.domain
+package com.arcanium.movienight.domain
 
 internal class NullUserException : Exception()

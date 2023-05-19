@@ -1,7 +1,7 @@
-package com.arcanium.data
+package com.arcanium.movienight.data
 
-import com.arcanium.data.user.UserRepository
-import com.arcanium.data.user.UserRepositoryImpl
+import com.arcanium.movienight.data.user.UserRepository
+import com.arcanium.movienight.data.user.UserRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides

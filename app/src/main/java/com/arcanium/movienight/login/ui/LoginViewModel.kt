@@ -2,9 +2,10 @@ package com.arcanium.movienight.login.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arcanium.data.user.UserRepository
-import com.arcanium.domain.user.model.User
+import com.arcanium.movienight.data.user.UserRepository
+import com.arcanium.movienight.domain.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -54,11 +56,32 @@ internal class LoginViewModel @Inject constructor(
         username: String,
         password: String
     ) = viewModelScope.launch {
+
         val loginResult = userRepository.loginWithEmailAndPassword(
             email = currentUiState.username.trim(),
             password = currentUiState.password.trim()
         )
+        when (loginResult) {
+            is Resource.Success -> {
+                updatingLoading(false)
+                _event.emitEvent(event = LoginEvent.AuthSuccess)
+            }
+            is Resource.Failure -> {
 
+            }
+        }
+    }
+
+    private fun <T> MutableSharedFlow<T>.emitEvent(event: T) = viewModelScope.launch {
+        withContext(Dispatchers.Main) {
+            this@emitEvent.emit(event)
+        }
+    }
+
+    private fun updatingLoading(state: Boolean) {
+        _loginUiState.update {
+            it.copy(isLoading = state)
+        }
     }
 
 }

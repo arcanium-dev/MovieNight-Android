@@ -1,4 +1,4 @@
-package com.arcanium.domain
+package com.arcanium.movienight.domain
 
 sealed class Resource<T, M>(
     open val data: T?,

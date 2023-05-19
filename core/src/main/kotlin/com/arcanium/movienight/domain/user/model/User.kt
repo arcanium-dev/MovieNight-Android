@@ -1,4 +1,4 @@
-package com.arcanium.domain.user.model
+package com.arcanium.movienight.domain.user.model
 
 import androidx.compose.runtime.Immutable
 

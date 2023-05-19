@@ -2,5 +2,6 @@ package com.arcanium.movienight.login.ui
 
 data class LoginUiState(
     val username: String = "",
-    val password: String = ""
+    val password: String = "",
+    val isLoading: Boolean = false
 )
