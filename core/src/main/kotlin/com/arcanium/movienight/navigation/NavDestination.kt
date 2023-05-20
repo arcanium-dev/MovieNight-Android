@@ -12,7 +12,7 @@ sealed class NavDestination(val route: String) {
     object Login : NavDestination(route = "login")
 }
 
-public fun NavGraphBuilder.composable(
+fun NavGraphBuilder.composable(
     navDestination: NavDestination,
     arguments: List<NamedNavArgument> = emptyList(),
     deepLinks: List<NavDeepLink> = emptyList(),

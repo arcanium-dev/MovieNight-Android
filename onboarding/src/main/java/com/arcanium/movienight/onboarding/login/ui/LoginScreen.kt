@@ -29,8 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
 import com.arcanium.movienight.navigation.NavDestination
+import com.arcanium.movienight.navigation.composable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -96,7 +96,7 @@ internal fun LoginScreen(
 
 
 fun NavGraphBuilder.routeLoginScreen() {
-    composable(route = NavDestination.Login) {
+    composable(navDestination = NavDestination.Login) {
         val loginViewModel = hiltViewModel<LoginViewModel>()
         val loginUiState by loginViewModel.loginUiState.collectAsStateWithLifecycle()
         LoginScreen(
@@ -104,5 +104,4 @@ fun NavGraphBuilder.routeLoginScreen() {
             loginOnClickListener = loginViewModel.onClickListener
         )
     }
-
 }

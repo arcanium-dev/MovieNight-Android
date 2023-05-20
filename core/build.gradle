@@ -20,7 +20,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
-
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.3'
+    }
+    buildFeatures {
+        compose true
+    }
     buildTypes {
         release {
             minifyEnabled false
