@@ -1,10 +1,13 @@
 package com.arcanium.movienight.onboarding.login.ui
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -24,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -42,14 +46,21 @@ internal fun LoginScreen(
     val screenHeight = remember {
         localConfiguration.screenHeightDp
     }
-    val textFieldHeight = ((screenHeight * 0.08f).toInt()).dp
+    val textFieldHeight = ((screenHeight * 0.10f).toInt()).dp
     var isPasswordVisible by remember {
         mutableStateOf(false)
     }
-    val componentWidth = 0.7f
+    val componentWidth = 0.80f
+    val focusManager = LocalFocusManager.current
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .clickable(
+                interactionSource = MutableInteractionSource(),
+                indication = null,
+                onClick = focusManager::clearFocus
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -61,7 +72,8 @@ internal fun LoginScreen(
             value = loginUiState.username,
             onValueChange = {
                 loginOnClickListener.onUsernameChanged(username = it)
-            }
+            },
+            singleLine = true
         )
         OutlinedTextField(
             modifier = Modifier
@@ -80,12 +92,14 @@ internal fun LoginScreen(
                         contentDescription = "Show password"
                     )
                 }
-            }
+            },
+            singleLine = true
         )
         Button(
             modifier = Modifier
-                .height(50.dp)
-                .fillMaxWidth(componentWidth),
+                .height(55.dp)
+                .fillMaxWidth(componentWidth)
+                .imePadding(),
             onClick = loginOnClickListener::onLoginButtonClicked,
             shape = CircleShape
         ) {
