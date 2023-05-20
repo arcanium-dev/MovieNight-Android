@@ -1,4 +1,4 @@
-package com.arcanium.movienight.login.ui
+package com.arcanium.movienight.onboarding.login.ui
 
 sealed class LoginEvent {
     object AuthSuccess : LoginEvent()

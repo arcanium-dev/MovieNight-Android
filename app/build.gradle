@@ -75,6 +75,7 @@ dependencies {
 
     // Core module
     implementation project(':core')
+    implementation project(':onboarding')
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -87,9 +88,6 @@ dependencies {
     // DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 
-    // Extended icons
-    implementation "androidx.compose.material:material-icons-extended"
-
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
 
@@ -97,5 +95,3 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'
 }
-
-//apply plugin

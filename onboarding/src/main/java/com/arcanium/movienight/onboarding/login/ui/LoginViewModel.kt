@@ -1,4 +1,4 @@
-package com.arcanium.movienight.login.ui
+package com.arcanium.movienight.onboarding.login.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -48,15 +48,17 @@ internal class LoginViewModel @Inject constructor(
         }
 
         override fun onLoginButtonClicked() {
-
+            loginUserWithEmail(
+                username = currentUiState.username,
+                password = currentUiState.password
+            )
         }
     }
 
-    private suspend fun loginUserWithEmail(
+    private fun loginUserWithEmail(
         username: String,
         password: String
     ) = viewModelScope.launch {
-
         val loginResult = userRepository.loginWithEmailAndPassword(
             email = currentUiState.username.trim(),
             password = currentUiState.password.trim()

@@ -1,4 +1,4 @@
-package com.arcanium.movienight.login.ui
+package com.arcanium.movienight.onboarding.login.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,6 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
+import com.arcanium.movienight.navigation.NavDestination
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,4 +92,17 @@ internal fun LoginScreen(
             Text(text = "Login")
         }
     }
+}
+
+
+fun NavGraphBuilder.routeLoginScreen() {
+    composable(route = NavDestination.Login) {
+        val loginViewModel = hiltViewModel<LoginViewModel>()
+        val loginUiState by loginViewModel.loginUiState.collectAsStateWithLifecycle()
+        LoginScreen(
+            loginUiState = loginUiState,
+            loginOnClickListener = loginViewModel.onClickListener
+        )
+    }
+
 }
