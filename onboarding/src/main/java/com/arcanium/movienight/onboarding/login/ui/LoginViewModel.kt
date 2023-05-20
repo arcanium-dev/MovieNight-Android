@@ -1,11 +1,10 @@
 package com.arcanium.movienight.onboarding.login.ui
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arcanium.movienight.data.user.UserRepository
 import com.arcanium.movienight.domain.Resource
+import com.arcanium.movienight.presentation.EventViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -15,13 +14,12 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 internal class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository
-) : ViewModel() {
+) : EventViewModel() {
 
     private val _loginUiState = MutableStateFlow(LoginUiState())
     val loginUiState: StateFlow<LoginUiState>
@@ -48,17 +46,11 @@ internal class LoginViewModel @Inject constructor(
         }
 
         override fun onLoginButtonClicked() {
-            loginUserWithEmail(
-                username = currentUiState.username,
-                password = currentUiState.password
-            )
+            loginUserWithEmail()
         }
     }
 
-    private fun loginUserWithEmail(
-        username: String,
-        password: String
-    ) = viewModelScope.launch {
+    private fun loginUserWithEmail() = viewModelScope.launch {
         val loginResult = userRepository.loginWithEmailAndPassword(
             email = currentUiState.username.trim(),
             password = currentUiState.password.trim()
@@ -74,11 +66,11 @@ internal class LoginViewModel @Inject constructor(
         }
     }
 
-    private fun <T> MutableSharedFlow<T>.emitEvent(event: T) = viewModelScope.launch {
-        withContext(Dispatchers.Main) {
-            this@emitEvent.emit(event)
-        }
-    }
+//    private fun <T> MutableSharedFlow<T>.emitEvent(event: T) = viewModelScope.launch {
+//        withContext(Dispatchers.Main) {
+//            this@emitEvent.emit(event)
+//        }
+//    }
 
     private fun updatingLoading(state: Boolean) {
         _loginUiState.update {
