@@ -1,7 +1,7 @@
 package com.arcanium.movienight
 
 import androidx.lifecycle.ViewModel
-import com.arcanium.movienight.data.user.UserRepository
+import com.arcanium.movienight.domain.user.UserRepository
 import com.arcanium.movienight.navigation.NavDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber

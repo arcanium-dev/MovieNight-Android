@@ -1,7 +1,8 @@
 package com.arcanium.movienight.data.user
 
-import com.arcanium.movienight.domain.NullUserException
 import com.arcanium.movienight.domain.Resource
+import com.arcanium.movienight.domain.user.NullUserException
+import com.arcanium.movienight.domain.user.UserRepository
 import com.arcanium.movienight.domain.user.model.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers

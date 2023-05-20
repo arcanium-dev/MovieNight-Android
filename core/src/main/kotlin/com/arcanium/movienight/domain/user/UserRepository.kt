@@ -1,4 +1,4 @@
-package com.arcanium.movienight.data.user
+package com.arcanium.movienight.domain.user
 
 import com.arcanium.movienight.domain.Resource
 import com.arcanium.movienight.domain.user.model.User
