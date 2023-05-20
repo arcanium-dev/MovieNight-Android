@@ -13,6 +13,10 @@ import kotlin.coroutines.suspendCoroutine
 internal class UserRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : UserRepository {
+
+    override val currentLoggedInUser: User?
+        get() = firebaseAuth.currentUser?.email?.let { User(username = it) }
+
     override suspend fun loginWithEmailAndPassword(
         email: String,
         password: String

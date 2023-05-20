@@ -10,6 +10,7 @@ import androidx.navigation.get
 
 sealed class NavDestination(val route: String) {
     object Login : NavDestination(route = "login")
+    object Home : NavDestination(route = "home")
 }
 
 fun NavGraphBuilder.composable(

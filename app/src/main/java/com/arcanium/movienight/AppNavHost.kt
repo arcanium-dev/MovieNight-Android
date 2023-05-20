@@ -11,10 +11,13 @@ import com.arcanium.movienight.navigation.NavDestination
 import com.arcanium.movienight.onboarding.login.ui.routeLoginScreen
 
 @Composable
-internal fun AppNavHost() {
+internal fun AppNavHost(startDestination: NavDestination) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = NavDestination.Login) {
+    NavHost(
+        navController = navController,
+        startDestination = startDestination
+    ) {
         routeLoginScreen()
     }
 }
