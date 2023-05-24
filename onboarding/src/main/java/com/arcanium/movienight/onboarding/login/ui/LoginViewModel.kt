@@ -85,10 +85,12 @@ internal class LoginViewModel
         when (loginResult) {
             is Resource.Success -> {
                 updatingLoading(false)
+                debugLog("Login successful")
                 _authSuccess.emitEvent(event = Unit)
             }
             is Resource.Failure -> {
                 updatingLoading(false)
+                debugLog("Login failed with exception=${loginResult.exception?.localizedMessage}")
                 _error.emitEvent(event = LoginError.AuthFailure)
             }
         }
