@@ -74,7 +74,7 @@ internal fun LoginScreen(
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth(componentWidth)
-                .height(80.dp)
+                .height(85.dp)
                 .padding(bottom = 20.dp),
             value = loginUiState.username,
             label = {
@@ -93,7 +93,7 @@ internal fun LoginScreen(
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth(componentWidth)
-                .height(80.dp)
+                .height(85.dp)
                 .padding(bottom = 20.dp),
             value = loginUiState.password,
             label = {
