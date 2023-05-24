@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -38,9 +39,9 @@ internal class LoginViewModel
     private val currentUiState: LoginUiState
         get() = loginUiState.value
 
-    private val _error = MutableSharedFlow<LoginError>()
-    val error: SharedFlow<LoginError>
-        get() = _error.asSharedFlow()
+    private val _error = MutableStateFlow<LoginError?>(null)
+    val error: StateFlow<LoginError?>
+        get() = _error.asStateFlow()
 
     private val _authSuccess: MutableSharedFlow<Unit> = MutableSharedFlow()
     val authSuccess: SharedFlow<Unit?>

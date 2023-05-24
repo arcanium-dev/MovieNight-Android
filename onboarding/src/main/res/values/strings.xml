@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="username_invalid_error">Username is in an invalid format.</string>
+    <string name="password_invalid_error">Password is in an invalid format.</string>
+    <string name="auth_failure">Username or password was incorrect, please try again.</string>
+    <string name="no_network_connectivity">No internet connection detected.</string>
+    <string name="api_error">A server error has occurred, please contact the devs.</string>
+
+    <string name="username_label">Username.</string>
+    <string name="password_label">Password.</string>
+
+</resources>
